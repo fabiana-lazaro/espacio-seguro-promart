@@ -38,21 +38,27 @@ function Footer() {
             </p>
           </div>
 
-          {/* Botones */}
-          <div className="flex flex-col gap-3 items-center md:items-end">
+          {/* Accesos rápidos */}
+          <div className="flex gap-4 justify-center md:justify-end">
 
             <Link
               to="/"
-              className="bg-white text-[#4B1FA3] px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition"
+              className="bg-white text-[#4B1FA3] p-4 rounded-xl shadow-md hover:shadow-lg transition flex flex-col items-center w-32"
             >
-              Inicio
+              <span className="text-2xl">🏠</span>
+              <p className="text-sm font-semibold mt-1">
+                Inicio
+              </p>
             </Link>
 
             <Link
               to="/que-hago"
-              className="bg-white text-[#4B1FA3] px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition"
+              className="bg-white text-[#4B1FA3] p-4 rounded-xl shadow-md hover:shadow-lg transition flex flex-col items-center w-32"
             >
-              ¿Qué hago si me pasa?
+              <span className="text-2xl">🧭</span>
+              <p className="text-sm font-semibold mt-1 text-center">
+                ¿Qué hago si me pasa?
+              </p>
             </Link>
 
           </div>
