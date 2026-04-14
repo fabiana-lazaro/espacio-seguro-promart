@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-[#4B1FA3] text-white mt-10">
-
+    <footer className="bg-[#4B1FA3] text-white">
       <div className="max-w-6xl mx-auto px-6 py-10">
-
         {/* Sección Principal */}
         <div className="grid md:grid-cols-3 gap-8 items-center">
-
           {/* Logo */}
           <div className="text-center md:text-left">
             <img
@@ -18,12 +15,11 @@ function Footer() {
               className="h-16 mb-3 mx-auto md:mx-0"
             />
 
-            <h3 className="text-lg font-semibold">
-              Espacio Seguro Promart
-            </h3>
+            <h3 className="text-lg font-semibold">Espacio Seguro Promart</h3>
 
             <p className="text-sm text-white/80 mt-2">
-              Promovemos un entorno laboral respetuoso, inclusivo y libre de hostigamiento.
+              Promovemos un entorno laboral respetuoso, inclusivo y libre de
+              hostigamiento.
             </p>
           </div>
 
@@ -33,22 +29,17 @@ function Footer() {
               "Un ambiente seguro permite que todos crezcamos juntos"
             </p>
 
-            <p className="text-sm text-white/80 mt-2">
-              Promart Homecenter
-            </p>
+            <p className="text-sm text-white/80 mt-2">Promart Homecenter</p>
           </div>
 
           {/* Accesos rápidos */}
           <div className="flex gap-4 justify-center md:justify-end">
-
             <Link
               to="/"
               className="bg-white text-[#4B1FA3] p-4 rounded-xl shadow-md hover:shadow-lg transition flex flex-col items-center w-32"
             >
               <span className="text-2xl">🏠</span>
-              <p className="text-sm font-semibold mt-1">
-                Inicio
-              </p>
+              <p className="text-sm font-semibold mt-1">Inicio</p>
             </Link>
 
             <Link
@@ -60,18 +51,14 @@ function Footer() {
                 ¿Qué hago si me pasa?
               </p>
             </Link>
-
           </div>
-
         </div>
 
         {/* Línea inferior */}
         <div className="border-t border-white/20 mt-8 pt-4 text-center text-sm text-white/80">
           © 2026 Promart Homecenter | Espacio Seguro Laboral
         </div>
-
       </div>
-
     </footer>
   );
 }
