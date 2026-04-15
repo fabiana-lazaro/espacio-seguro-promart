@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import Intro from "./pages/Intro";
 import Footer from "./components/Footer";
 import QueHago from "./pages/QueHago";
+import ResultadoFinal from "./pages/ResultadoFinal";
+
 function App() {
   return (
     <BrowserRouter>
@@ -11,12 +13,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/intro" element={<Intro />} />
         <Route path="/que-hago" element={<QueHago />} />
+        <Route path="/resultado" element={<ResultadoFinal />} />
       </Routes>
 
       <Footer />
 
     </BrowserRouter>
-  ); 
+  );
 }
 
 export default App;
