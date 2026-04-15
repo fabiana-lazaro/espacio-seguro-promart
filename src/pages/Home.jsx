@@ -13,12 +13,10 @@ function Home() {
   return (
     <section className="min-h-screen bg-[#FF5A00] text-white flex items-center">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8">
-        
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          
           {/* TEXTO */}
           <div className="mx-auto w-full max-w-xl text-center lg:mx-0 lg:text-left">
-            <span className="font-body mb-4 inline-block rounded-full bg-white px-5 py-2 text-sm font-semibold text-[#FF5A00] shadow-sm">
+            <span className="font-body mb-3 inline-block rounded-full bg-white px-6 py-2 text-sm font-semibold text-[#FF5A00] shadow-sm">
               {APP_NAME}
             </span>
 
@@ -46,9 +44,7 @@ function Home() {
               className="h-auto max-h-[420px] w-full max-w-md rounded-xl object-contain shadow-xl lg:max-w-lg"
             />
           </div>
-
         </div>
-
       </div>
     </section>
   );

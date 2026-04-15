@@ -5,17 +5,10 @@ const APP_NAME = "Espacio Seguro";
 const INTRO_TAG = "Antes de empezar";
 const INTRO_TITLE = "¿Puedes reconocer el hostigamiento laboral?";
 const INTRO_TEXT =
-  "Analiza situaciones inspiradas en casos reales y decide si pueden considerarse hostigamiento laboral.";
+  "Pon a prueba tu criterio con situaciones inspiradas en casos reales del entorno laboral.";
 
-const STEP_ONE = "Observa la situación";
-const STEP_TWO = "Analiza el contexto";
-const STEP_THREE = "Toma una decisión";
-
-const NOTE_TEXT =
-  "Recuerda: no solo importa la intención, sino también cómo puede afectar a la otra persona.";
-
-const START_BUTTON_TEXT = "Empezar";
 const BACK_TEXT = "Volver";
+const START_BUTTON_TEXT = "Empezar";
 
 function Intro() {
   return (
@@ -24,7 +17,7 @@ function Intro() {
         <div className="grid w-full items-center gap-6 md:grid-cols-2 md:gap-8">
           {/* IZQUIERDA */}
           <div className="w-full max-w-xl text-center md:text-left">
-            <span className="font-body mb-4 inline-block rounded-full bg-white px-5 py-2 text-sm font-semibold text-[#FF5A00] shadow-sm">
+            <span className="font-body mb-3 inline-block rounded-full bg-white px-6 py-2 text-sm font-semibold text-[#FF5A00] shadow-sm">
               {APP_NAME}
             </span>
 
@@ -40,8 +33,7 @@ function Intro() {
               {INTRO_TEXT}
             </p>
 
-            {/* BOTONES */}
-            <div className="mt-2 flex justify-center gap-4 md:justify-center">
+            <div className="mt-2 flex justify-center gap-4">
               <Link
                 to="/"
                 className="font-body rounded-full bg-white px-7 py-3 text-sm font-semibold text-[#4B1FA3] no-underline shadow-lg transition hover:-translate-y-0.5 hover:bg-[#FFF3EC]"
@@ -61,35 +53,55 @@ function Intro() {
           {/* DERECHA */}
           <div className="w-full max-w-xl md:justify-self-end">
             <div className="rounded-2xl bg-white p-6 text-gray-800 shadow-xl sm:p-7">
-              <div className="mb-3 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFE7D9] font-title text-[#FF5A00]">
-                  1
-                </div>
-                <p className="font-body mt-2 text-base font-semibold text-[#2B0B57]">
-                  {STEP_ONE}
+              {/* INSTRUCCIÓN 1 */}
+              <div className="mb-4">
+                <p className="font-body text-base font-semibold text-[#2B0B57]">
+                  Analiza cada situación
+                </p>
+                <p className="font-body mt-1 text-sm leading-6 text-gray-700">
+                  Avanza por{" "}
+                  <span className="font-semibold text-[#FF5A00]">
+                    3 niveles
+                  </span>{" "}
+                  con distintos casos que deberás evaluar.
                 </p>
               </div>
 
-              <div className="mb-3 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E8D9FF] font-title text-[#4B1FA3]">
-                  2
-                </div>
-                <p className="font-body mt-2 text-base font-semibold text-[#2B0B57]">
-                  {STEP_TWO}
+              {/* INSTRUCCIÓN 2 */}
+              <div className="mb-4">
+                <p className="font-body text-base font-semibold text-[#2B0B57]">
+                  Responde a tiempo
+                </p>
+                <p className="font-body mt-1 text-sm leading-6 text-gray-700">
+                  Tendrás{" "}
+                  <span className="font-semibold text-[#FF5A00]">
+                    12 segundos
+                  </span>{" "}
+                  para responder cada pregunta.
                 </p>
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#D8F5EE] font-title text-[#008B7A]">
-                  3
-                </div>
-                <p className="font-body mt-2 text-base font-semibold text-[#2B0B57]">
-                  {STEP_THREE}
+              {/* INSTRUCCIÓN 3 */}
+              <div className="mb-4">
+                <p className="font-body text-base font-semibold text-[#2B0B57]">
+                  Compara tu desempeño
+                </p>
+                <p className="font-body mt-1 text-sm leading-6 text-gray-700">
+                  Podrás comparar tus resultados con otras tiendas, distritos y
+                  ciudades de Promart.
                 </p>
               </div>
 
-              <div className="mt-4 rounded-xl bg-[#FFF6F1] p-3">
-                <p className="font-body text-sm text-gray-700">{NOTE_TEXT}</p>
+              {/* INSTRUCCIÓN 4 */}
+              <div>
+                <p className="font-body text-base font-semibold text-[#2B0B57]">
+                  Sigue aprendiendo
+                </p>
+                <p className="font-body mt-1 text-sm leading-6 text-gray-700">
+                  Después de cada pregunta podrás acceder a{" "}
+                  <span className="font-semibold text-[#4B1FA3]">Aprender</span>{" "}
+                  y profundizar en cada situación.
+                </p>
               </div>
             </div>
           </div>
