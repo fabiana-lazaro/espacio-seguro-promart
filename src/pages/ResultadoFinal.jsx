@@ -15,10 +15,8 @@ function ResultadoFinal({ puntaje = 3, total = 5 }) {
   return (
     <section className="min-h-screen bg-[#FF5A00] flex items-center justify-center text-white">
       <div className="max-w-4xl w-full mx-auto px-6 py-12">
-        
         {/* Tarjeta principal */}
         <div className="bg-white text-gray-800 rounded-3xl shadow-2xl p-10 text-center">
-          
           {/* Icono */}
           <div className="text-6xl mb-4">🏆</div>
 
@@ -33,9 +31,7 @@ function ResultadoFinal({ puntaje = 3, total = 5 }) {
 
           {/* Puntaje */}
           <div className="bg-gray-100 rounded-2xl p-6 mb-6">
-            <h2 className="text-2xl font-semibold mb-2">
-              Tu Puntaje
-            </h2>
+            <h2 className="text-2xl font-semibold mb-2">Tu Puntaje</h2>
 
             <div className="text-5xl font-bold text-[#FF5A00]">
               {puntaje} / {total}
@@ -61,7 +57,6 @@ function ResultadoFinal({ puntaje = 3, total = 5 }) {
 
           {/* Botones */}
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-
             <Link
               to="/que-hago"
               className="bg-[#4B1FA3] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#3C1882] transition"
@@ -82,11 +77,8 @@ function ResultadoFinal({ puntaje = 3, total = 5 }) {
             >
               Volver al Inicio
             </Link>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );
