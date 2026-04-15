@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const APP_NAME = "Espacio Seguro";
+const APP_NAME = "Espacio Seguro Promart";
 const INTRO_TAG = "Antes de empezar";
 const INTRO_TITLE = "¿Puedes reconocer el hostigamiento laboral?";
 const INTRO_TEXT =

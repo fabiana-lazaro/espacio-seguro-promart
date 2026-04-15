@@ -3,11 +3,5 @@
 a,
 a:hover,
 a:focus {
-  text-decoration: none;
-}
-
-.form-control:focus,
-.form-select:focus {
-  border-color: #6f2dbd;
-  box-shadow: 0 0 0 0.15rem rgba(111, 45, 189, 0.15);
+  text-decoration: none !important;
 }
