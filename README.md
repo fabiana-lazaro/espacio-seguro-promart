@@ -1,20 +1,37 @@
-<<<<<<< HEAD
-# React + Vite
+# 🟠 Espacio Seguro Promart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Descripción
 
-Currently, two official plugins are available:
+**Espacio Seguro Promart** es una página web interactivo diseñado para ayudar a los colaboradores de Promart a identificar y actuar frente a situaciones de hostigamiento laboral.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+A través de una experiencia basada en casos simulados, el usuario analiza situaciones reales del entorno de trabajo, toma decisiones y recibe retroalimentación inmediata que refuerza el aprendizaje.
 
-## React Compiler
+La página web no solo informa, sino que guía al usuario hacia la acción, ofreciendo orientación clara y un canal de denuncia confidencial.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🎯 Enfoque
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# espacio-seguro-promart
->>>>>>> 294422bbca5a4855b62452cbde401735c9f7c1c2
+- Identificación de conductas de hostigamiento  
+- Aprendizaje interactivo y práctico  
+- Orientación clara para actuar  
+- Promoción de una cultura de respeto laboral  
+
+---
+
+## 🛠️ Tecnologías
+
+- React (Vite)  
+- Tailwind CSS + Bootstrap  
+- Firebase (Auth + Firestore)  
+
+---
+
+## 🔐 Funcionalidades clave
+
+- Simulación de casos con decisiones (Sí / No / Depende)  
+- Feedback inmediato y educativo  
+- Progreso y resultados en tiempo real  
+- Guía de acción para víctimas o testigos  
+- Sistema de denuncia confidencial  
+- Login opcional para guardar progreso  
