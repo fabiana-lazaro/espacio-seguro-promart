@@ -7,7 +7,7 @@ const HERO_DESCRIPTION =
   "Reconoce situaciones de hostigamiento en el trabajo y descubre cómo identificarlas a tiempo.";
 
 const HOME_BUTTON_TEXT = "Descubre si puedes identificarlo";
-const HERO_IMAGE = "/images/interactive-case.png";
+const HERO_IMAGE = `${import.meta.env.BASE_URL}images/interactive-case.png`;
 
 function Home() {
   return (
