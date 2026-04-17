@@ -1,62 +1,69 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-[#4B1FA3] text-white">
-      <div className="max-w-6xl mx-auto px-6 py-10">
-        {/* Sección Principal */}
-        <div className="grid md:grid-cols-3 gap-8 items-center">
-          {/* Logo */}
-          <div className="text-center md:text-left">
+    <footer className="bg-[#1F1F2E] text-white">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="grid md:grid-cols-4 justify-items-center gap-10">
+          {/* Marca */}
+          <div>
             <img
-              src="https://promart.vteximg.com.br/arquivos/promart-homecenter-logo.png?v=636854959088970000"
-              alt="Promart Logo"
-              className="h-16 mb-3 mx-auto md:mx-0"
+              src="https://marana.pe/wp-content/uploads/2022/10/logo-promart.svg"
+              alt="Promart"
+              className="h-16 mb-4 object-contain"
             />
 
-            <h3 className="text-lg font-semibold">Espacio Seguro Promart</h3>
-
-            <p className="text-sm text-white/80 mt-2">
-              Promovemos un entorno laboral respetuoso, inclusivo y libre de
-              hostigamiento.
+            <p className="text-sm text-white/70">
+              Espacio seguro laboral para prevenir el hostigamiento.
             </p>
           </div>
 
-          {/* Frase */}
-          <div className="text-center">
-            <p className="text-lg font-medium">
-              "Un ambiente seguro permite que todos crezcamos juntos"
-            </p>
+          {/* FRASE NUEVA */}
+          <div className="flex flex-col justify-center">
+            <h4 className="font-semibold mb-3">Nuestro propósito</h4>
 
-            <p className="text-sm text-white/80 mt-2">Promart Homecenter</p>
+            <p className="text-sm text-white/80 italic leading-relaxed">
+              💡 “Llevamos a la luz lo que otros prefieren ignorar”
+            </p>
           </div>
 
-          {/* Accesos rápidos */}
-          <div className="flex gap-4 justify-center md:justify-end">
-            <Link
-              to="/"
-              className="bg-white text-[#4B1FA3] p-4 rounded-xl shadow-md hover:shadow-lg transition flex flex-col items-center w-32"
-            >
-              <span className="text-2xl">🏠</span>
-              <p className="text-sm font-semibold mt-1">Inicio</p>
-            </Link>
+          {/* Ayuda */}
+          <div>
+            <div className="flex flex-col items-center text-center"></div>
+            <h4 className="font-semibold mb-3">Ayuda</h4>
+            <ul className="space-y-2 text-sm text-white/80">
+              <li className="hover:text-white cursor-pointer transition">
+                Canal de denuncia
+              </li>
+              <li className="hover:text-white cursor-pointer transition">
+                Soporte interno
+              </li>
+              <li className="hover:text-white cursor-pointer transition">
+                Confidencialidad 🔒
+              </li>
+            </ul>
+          </div>
+
+          {/* CTA */}
+          <div>
+            <h4 className="font-semibold mb-3">Nuestro compromiso</h4>
+
+            <p className="text-sm text-white/70 mb-4">
+              “Un ambiente seguro permite que todos crezcamos juntos”
+            </p>
 
             <Link
               to="/que-hago"
-              className="bg-white text-[#4B1FA3] p-4 rounded-xl shadow-md hover:shadow-lg transition flex flex-col items-center w-32"
+              className="bg-[#FF6A00] text-white px-5 py-2 rounded-full font-semibold hover:scale-105 transition"
             >
-              <span className="text-2xl">🧭</span>
-              <p className="text-sm font-semibold mt-1 text-center">
-                ¿Qué hago si me pasa?
-              </p>
+              Obtener ayuda
             </Link>
           </div>
         </div>
 
         {/* Línea inferior */}
-        <div className="border-t border-white/20 mt-8 pt-4 text-center text-sm text-white/80">
-          © 2026 Promart Homecenter | Espacio Seguro Laboral
+        <div className="border-t border-gray-700 mt-10 pt-5 text-center text-xs text-white/60">
+          © 2026 Promart Homecenter | Espacio Seguro
         </div>
       </div>
     </footer>
