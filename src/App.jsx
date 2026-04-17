@@ -8,7 +8,7 @@ import ReportForm from "./pages/ReportForm";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/espacio-seguro-promart">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/intro" element={<Intro />} />
