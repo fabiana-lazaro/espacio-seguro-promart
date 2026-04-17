@@ -1,11 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Intro from "./pages/Intro";
-import Footer from "./components/Footer";
 import QueHago from "./pages/QueHago";
 import ResultadoFinal from "./pages/ResultadoFinal";
 import ReportForm from "./pages/ReportForm";
-import Header from "./components/Header";
+import Login from "./pages/Login";
+
+import Footer from "./components/Footer";
+import Header from "./components/header";
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
         <Route path="/que-hago" element={<QueHago />} />
         <Route path="/resultado" element={<ResultadoFinal />} />
         <Route path="/denuncia" element={<ReportForm />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
 
       <Footer />
