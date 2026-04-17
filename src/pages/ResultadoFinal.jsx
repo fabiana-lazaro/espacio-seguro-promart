@@ -13,7 +13,19 @@ function ResultadoFinal({ puntaje = 3, total = 5 }) {
   };
 
   return (
-    <section className="min-h-screen bg-[#FF5A00] flex items-center justify-center text-white">
+    <section
+      className="min-h-screen flex items-center justify-center text-white"
+      style={{
+        background: `linear-gradient(
+          180deg,
+          #ff5f00 0%,
+          #ff6a00 25%,
+          #ff7a00 50%,
+          #ff8c1a 75%,
+          #ffa322 100%
+        )`,
+      }}
+    >
       <div className="max-w-4xl w-full mx-auto px-6 py-12">
         {/* Tarjeta principal */}
         <div className="bg-white text-gray-800 rounded-3xl shadow-2xl p-10 text-center">
@@ -59,7 +71,7 @@ function ResultadoFinal({ puntaje = 3, total = 5 }) {
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <Link
               to="/que-hago"
-              className="bg-[#4B1FA3] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#3C1882] transition"
+              className="bg-gray-700 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-800 transition"
             >
               ¿Qué hago si me pasa?
             </Link>

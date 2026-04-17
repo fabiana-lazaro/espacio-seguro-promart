@@ -11,7 +11,19 @@ const HERO_IMAGE = `${import.meta.env.BASE_URL}images/interactive-case.png`;
 
 function Home() {
   return (
-    <section className="min-h-screen bg-[#FF5A00] text-white flex items-center">
+    <section
+      className="min-h-screen text-white flex items-center"
+      style={{
+        background: `linear-gradient(
+          180deg,
+          #ff5f00 0%,
+          #ff6a00 25%,
+          #ff7a00 50%,
+          #ff8c1a 75%,
+          #ffa322 100%
+        )`,
+      }}
+    >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* TEXTO */}
@@ -30,7 +42,7 @@ function Home() {
 
             <Link
               to="/intro"
-              className="font-body inline-block rounded-full bg-[#4B1FA3] px-6 py-3 text-sm font-semibold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-[#3C1882] sm:px-7 sm:text-base"
+              className="inline-block rounded-full bg-gray-700 text-white px-7 py-3 text-sm sm:text-base font-semibold shadow-lg transition duration-200 hover:bg-gray-800 hover:-translate-y-0.5 font-body"
             >
               {HOME_BUTTON_TEXT}
             </Link>

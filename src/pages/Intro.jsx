@@ -12,7 +12,19 @@ const START_BUTTON_TEXT = "Empezar";
 
 function Intro() {
   return (
-    <section className="min-h-screen bg-[#FF5A00] text-white">
+    <section
+      className="min-h-screen text-white"
+      style={{
+        background: `linear-gradient(
+          180deg,
+          #ff5f00 0%,
+          #ff6a00 25%,
+          #ff7a00 50%,
+          #ff8c1a 75%,
+          #ffa322 100%
+        )`,
+      }}
+    >
       <div className="mx-auto flex min-h-screen max-w-6xl items-center px-5 py-6 sm:px-6 lg:px-8">
         <div className="grid w-full items-center gap-6 md:grid-cols-2 md:gap-8">
           {/* IZQUIERDA */}
@@ -43,7 +55,7 @@ function Intro() {
 
               <Link
                 to="/game"
-                className="font-body rounded-full bg-[#4B1FA3] px-7 py-3 text-sm font-semibold text-white no-underline shadow-lg transition hover:-translate-y-0.5 hover:bg-[#3C1882]"
+                className="font-body rounded-full bg-gray-700 px-7 py-3 text-sm font-semibold text-white no-underline shadow-lg transition hover:-translate-y-0.5 hover:bg-gray-800"
               >
                 {START_BUTTON_TEXT}
               </Link>

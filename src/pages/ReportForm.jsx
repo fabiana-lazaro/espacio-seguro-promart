@@ -132,7 +132,19 @@ export default function ReportForm() {
   };
 
   return (
-    <section className="bg-[#FF6A13] py-5 px-3 px-md-4 font-body">
+    <section
+      className="py-5 px-3 px-md-4 font-body"
+      style={{
+        background: `linear-gradient(
+          180deg,
+          #ff5f00 0%,
+          #ff6a00 25%,
+          #ff7a00 50%,
+          #ff8c1a 75%,
+          #ffa322 100%
+        )`,
+      }}
+    >
       <div className="container-fluid container-md">
         <div className="row justify-content-center">
           <div className="col-12 col-lg-10">
