@@ -5,10 +5,13 @@ import Footer from "./components/Footer";
 import QueHago from "./pages/QueHago";
 import ResultadoFinal from "./pages/ResultadoFinal";
 import ReportForm from "./pages/ReportForm";
+import Header from "./components/Header";
 
 function App() {
   return (
     <BrowserRouter basename="/espacio-seguro-promart">
+      <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/intro" element={<Intro />} />
