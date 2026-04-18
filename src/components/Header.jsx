@@ -9,7 +9,7 @@ function Header({ user }) {
         <img
           src="https://marana.pe/wp-content/uploads/2022/10/logo-promart.svg"
           alt="Promart"
-          className="h-25 object-contain"
+          className="h-18 object-contain"
         />
 
         {/* Navegación */}
