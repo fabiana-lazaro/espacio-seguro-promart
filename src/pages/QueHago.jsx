@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// Si usas lucide-react (muy común en proyectos modernos), si no, usa emojis como tenías
 import {
   ShieldAlert,
   Info,
@@ -8,10 +7,11 @@ import {
   FileText,
   HeartHandshake,
   Eye,
+  Check
 } from "lucide-react";
 
 function QueHago() {
-  const [tipo, setTipo] = useState("victima"); // Por defecto victima para que no se vea vacío al inicio
+  const [tipo, setTipo] = useState("victima");
 
   const pasosVictima = [
     {
@@ -65,14 +65,7 @@ function QueHago() {
     <section
       className="min-h-screen text-white flex items-center font-sans"
       style={{
-        background: `linear-gradient(
-          180deg,
-          #ff5f00 0%,
-          #ff6a00 25%,
-          #ff7a00 50%,
-          #ff8c1a 75%,
-          #ffa322 100%
-        )`,
+        background: `linear-gradient(180deg, #ff5f00 0%, #ff6a00 100%)`,
       }}
     >
       <div className="max-w-6xl mx-auto px-6 py-12 w-full">
@@ -83,18 +76,17 @@ function QueHago() {
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
             En <strong>Promart</strong>, tu seguridad es nuestra prioridad.
-            Sigue esta guía para saber cómo actuar frente al hostigamiento
-            laboral.
           </p>
         </div>
-        {/* Selector de Rol con estilo de Tab */}
+
+        {/* Selector */}
         <div className="flex justify-center mb-12">
-          <div className="bg-[#3C1882]/30 p-1 rounded-2xl flex gap-2 backdrop-blur-sm">
+          <div className="bg-gray-800/30 p-1 rounded-2xl flex gap-2 backdrop-blur-sm">
             <button
               onClick={() => setTipo("victima")}
               className={`px-8 py-3 rounded-xl font-bold transition-all duration-300 ${
                 tipo === "victima"
-                  ? "bg-white text-[#4B1FA3] shadow-lg scale-105"
+                  ? "bg-white text-gray-700 shadow-lg scale-105"
                   : "text-white hover:bg-white/10"
               }`}
             >
@@ -104,7 +96,7 @@ function QueHago() {
               onClick={() => setTipo("testigo")}
               className={`px-8 py-3 rounded-xl font-bold transition-all duration-300 ${
                 tipo === "testigo"
-                  ? "bg-white text-[#4B1FA3] shadow-lg scale-105"
+                  ? "bg-white text-gray-700 shadow-lg scale-105"
                   : "text-white hover:bg-white/10"
               }`}
             >
@@ -112,53 +104,81 @@ function QueHago() {
             </button>
           </div>
         </div>
+
         {/* Contenedor Principal */}
-        <div className="bg-slate-50 text-gray-800 rounded-[2.5rem] shadow-2xl overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
-          {/* Lado Izquierdo: Ilustración/Badge */}
-          <div className="bg-[#4B1FA3] md:w-1/3 p-10 flex flex-col justify-center items-center text-center">
-            <div className="bg-white/10 p-6 rounded-full mb-6">
-              <ShieldAlert size={80} className="text-white" />
+        <div className="bg-white text-gray-800 rounded-[2.5rem] shadow-2xl overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
+          
+          {/* LADO IZQUIERDO MEJORADO CON VERDE */}
+          <div className="bg-[#1D2533] md:w-1/3 p-10 flex flex-col justify-center">
+            <div className="bg-white/10 p-6 rounded-full mb-6 mx-auto">
+              <ShieldAlert size={60} className="text-[#9FE3DB]" />
             </div>
-            <h3 className="text-white text-2xl font-bold leading-tight">
+
+            <h3 className="text-white text-2xl font-bold text-center leading-tight mb-6">
               Espacio Seguro <br /> Promart
             </h3>
-            <p className="text-white/70 mt-4 text-sm">
-              Estamos aquí para escucharte y proteger tu integridad laboral.
+
+            {/* Lista con Iconos Verdes Estilo Denuncia */}
+            <div className="flex flex-col gap-4 mb-8">
+              <div className="d-flex align-items-center flex items-center">
+                <div className="rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ width: "24px", height: "24px", backgroundColor: "#28a745" }}>
+                  <Check size={14} className="text-white font-bold" />
+                </div>
+                <span className="text-white/90 text-sm font-semibold">Confidencial</span>
+              </div>
+
+              <div className="d-flex align-items-center flex items-center">
+                <div className="rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ width: "24px", height: "24px", backgroundColor: "#28a745" }}>
+                  <Check size={14} className="text-white font-bold" />
+                </div>
+                <span className="text-white/90 text-sm font-semibold">Apoyo profesional</span>
+              </div>
+
+              <div className="d-flex align-items-center flex items-center">
+                <div className="rounded-full flex items-center justify-center mr-3 flex-shrink-0" style={{ width: "24px", height: "24px", backgroundColor: "#28a745" }}>
+                  <Check size={14} className="text-white font-bold" />
+                </div>
+                <span className="text-white/90 text-sm font-semibold">Respuesta rápida</span>
+              </div>
+            </div>
+
+            <p className="text-white/60 text-center text-xs leading-relaxed">
+              Nuestro equipo está comprometido en garantizar un entorno laboral seguro.
             </p>
           </div>
 
-          {/* Lado Derecho: Pasos */}
+          {/* LADO DERECHO */}
           <div className="md:w-2/3 p-8 md:p-12">
-            <h2 className="text-3xl font-bold mb-8 text-[#4B1FA3]">
-              {tipo === "victima"
-                ? "Pasos a seguir si eres víctima"
-                : "Cómo actuar si eres testigo"}
+            <h2 className="text-3xl font-bold mb-8 text-gray-700">
+              {tipo === "victima" ? "Pasos a seguir si eres víctima" : "Cómo actuar si eres testigo"}
             </h2>
 
             <div className="grid gap-8">
               {pasos.map((paso, index) => (
                 <div key={index} className="flex gap-5 group">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white border-2 border-gray-100 rounded-xl shadow-sm flex items-center justify-center group-hover:border-[#FF5A00] transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 bg-white border-2 border-gray-100 rounded-xl shadow-sm flex items-center justify-center group-hover:border-[#28a745] transition-colors">
                     {paso.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg text-gray-900">
+                    <h4 className="font-bold text-lg text-gray-900 group-hover:text-[#28a745] transition-colors">
                       {paso.text}
                     </h4>
-                    <p className="text-gray-500 leading-relaxed">{paso.desc}</p>
+                    <p className="text-gray-500 leading-relaxed text-sm">
+                      {paso.desc}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* CTA Final */}
+            {/* CTA */}
             <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6">
-              <p className="text-sm text-gray-400 font-medium">
-                Tu denuncia es 100% confidencial.
+              <p className="text-xs text-gray-400 font-medium italic">
+                Tu reporte es 100% privado y protegido.
               </p>
               <Link
                 to="/denuncia"
-                className="w-full sm:w-auto bg-[#FF5A00] text-white px-10 py-4 rounded-xl font-bold hover:bg-[#e65100] hover:shadow-xl transform hover:-translate-y-1 transition-all text-center"
+                className="w-full sm:w-auto bg-[#FF5A00] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#e65100] hover:shadow-xl transform hover:-translate-y-1 transition-all text-center"
               >
                 Ir al Canal de Denuncia
               </Link>

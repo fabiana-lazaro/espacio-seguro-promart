@@ -24,36 +24,68 @@ function Home() {
         )`,
       }}
     >
-      <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* TEXTO */}
-          <div className="mx-auto w-full max-w-xl text-center lg:mx-0 lg:text-left">
-            <span className="font-body mb-3 inline-block rounded-full bg-white px-6 py-2 text-sm font-semibold text-[#FF5A00] shadow-sm">
-              {APP_NAME}
-            </span>
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          
+          {/* TEXTO CON FUENTES AGRANDADAS (TAMAÑO TIPO REFERENCIA) */}
+          <div className="mx-auto w-full max-w-2xl text-center lg:mx-0 lg:text-left">
+            
+            {/* Etiqueta superior más grande */}
+            <div className="mb-8 inline-flex items-center rounded-xl bg-white/95 px-5 py-3 shadow-lg">
+              <div className="mr-3 flex h-6 w-6 items-center justify-center rounded bg-[#FF5A00] text-white">
+                <span style={{ fontSize: '12px' }}>🛡️</span>
+              </div>
+              <span className="text-base font-bold text-[#FF5A00] tracking-wide">
+                {APP_NAME}
+              </span>
+            </div>
 
-            <h1 className="font-title mb-3 text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            {/* Título de gran impacto */}
+            <h1 className="mb-6 text-6xl font-black leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl">
               {HERO_TITLE}
             </h1>
 
-            <p className="font-body mx-auto mb-3 max-w-lg text-base leading-7 text-white/95 sm:text-lg lg:mx-0">
+            {/* Descripción con mejor lectura */}
+            <p className="mx-auto mb-10 max-w-xl text-xl leading-relaxed text-white/95 sm:text-2xl lg:mx-0">
               {HERO_DESCRIPTION}
             </p>
 
-            <Link
-              to="/intro"
-              className="inline-block rounded-full bg-gray-700 text-white px-7 py-3 text-sm sm:text-base font-semibold shadow-lg transition duration-200 hover:bg-gray-800 hover:-translate-y-0.5 font-body"
-            >
-              {HOME_BUTTON_TEXT}
-            </Link>
+            {/* Botón más robusto */}
+            <div className="mb-12">
+              <Link
+                to="/intro"
+                className="inline-flex items-center rounded-xl bg-[#2d2d44] px-10 py-4 text-lg sm:text-xl font-bold text-white shadow-2xl transition duration-300 hover:bg-[#1a1a2e] hover:scale-105 active:scale-95"
+              >
+                {HOME_BUTTON_TEXT}
+                <span className="ml-4 text-2xl">›</span>
+              </Link>
+            </div>
+
+            {/* Lista de beneficios con texto más grande */}
+            <div className="flex flex-col gap-5">
+              {[
+                "Identifica situaciones reales",
+                "Aprende a actuar correctamente",
+                "Protege tu entorno laboral"
+              ].map((text, index) => (
+                <div key={index} className="flex items-center justify-center lg:justify-start">
+                  <div className="mr-4 flex h-8 w-8 items-center justify-center rounded-full bg-[#8bc34a] shadow-md">
+                    <span className="text-sm font-bold text-white">✓</span>
+                  </div>
+                  <span className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
+                    {text}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* IMAGEN */}
-          <div className="mx-auto flex w-full max-w-xl justify-center">
+          {/* IMAGEN MANTENIDA */}
+          <div className="mx-auto flex w-full max-w-2xl justify-center lg:justify-end">
             <img
               src={HERO_IMAGE}
               alt="Escena laboral"
-              className="h-auto max-h-[420px] w-full max-w-md rounded-xl object-contain shadow-xl lg:max-w-lg"
+              className="h-auto max-h-[500px] w-full rounded-3xl object-contain shadow-[0_20px_50px_rgba(0,0,0,0.3)] lg:max-h-[550px]"
             />
           </div>
         </div>

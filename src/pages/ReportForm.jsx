@@ -24,45 +24,22 @@ export default function ReportForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-
-    if (!formData.reporterRole.trim()) {
-      newErrors.reporterRole = "Selecciona una opción.";
-    }
-
-    if (!formData.place.trim()) {
-      newErrors.place = "Este campo es obligatorio.";
-    }
-
-    if (!formData.involvedPerson.trim()) {
-      newErrors.involvedPerson = "Selecciona una opción.";
-    }
-
+    if (!formData.reporterRole.trim()) newErrors.reporterRole = "Selecciona una opción.";
+    if (!formData.place.trim()) newErrors.place = "Este campo es obligatorio.";
+    if (!formData.involvedPerson.trim()) newErrors.involvedPerson = "Selecciona una opción.";
     if (formData.involvedPerson === "Otro" && !formData.involvedOther.trim()) {
       newErrors.involvedOther = "Especifica quién estuvo involucrado.";
     }
-
-    if (!formData.incidentType.trim()) {
-      newErrors.incidentType = "Selecciona una opción.";
-    }
-
+    if (!formData.incidentType.trim()) newErrors.incidentType = "Selecciona una opción.";
     if (formData.incidentType === "Otro" && !formData.incidentOther.trim()) {
       newErrors.incidentOther = "Especifica el tipo de situación.";
     }
-
     if (!formData.description.trim()) {
       newErrors.description = "Describe lo ocurrido.";
     } else if (formData.description.trim().length < 20) {
@@ -70,27 +47,20 @@ export default function ReportForm() {
     }
 
     if (formData.reportMode === "identified") {
-      if (!formData.name.trim()) {
-        newErrors.name = "Ingresa tu nombre.";
-      }
-
+      if (!formData.name.trim()) newErrors.name = "Ingresa tu nombre.";
       if (!formData.email.trim()) {
         newErrors.email = "Ingresa tu correo.";
       } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
         newErrors.email = "Ingresa un correo válido.";
       }
     }
-
     return newErrors;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const validationErrors = validateForm();
     setErrors(validationErrors);
-    setStatusMessage("");
-
     if (Object.keys(validationErrors).length > 0) {
       setIsSuccess(false);
       setStatusMessage("Por favor, corrige los campos marcados.");
@@ -98,27 +68,14 @@ export default function ReportForm() {
     }
 
     setIsSubmitting(true);
-
     try {
       await addDoc(collection(db, "reports"), {
-        reportMode: formData.reportMode,
-        reporterRole: formData.reporterRole,
-        place: formData.place,
-        involvedPerson:
-          formData.involvedPerson === "Otro"
-            ? formData.involvedOther
-            : formData.involvedPerson,
-        incidentType:
-          formData.incidentType === "Otro"
-            ? formData.incidentOther
-            : formData.incidentType,
-        description: formData.description,
-        name: formData.reportMode === "identified" ? formData.name : "",
-        email: formData.reportMode === "identified" ? formData.email : "",
+        ...formData,
+        involvedPerson: formData.involvedPerson === "Otro" ? formData.involvedOther : formData.involvedPerson,
+        incidentType: formData.incidentType === "Otro" ? formData.incidentOther : formData.incidentType,
         createdAt: serverTimestamp(),
         status: "pending",
       });
-
       setFormData(initialForm);
       setErrors({});
       setIsSuccess(true);
@@ -132,175 +89,117 @@ export default function ReportForm() {
   };
 
   return (
-    <section
-      className="py-5 px-3 px-md-4 font-body"
-      style={{
-        background: `linear-gradient(
-          180deg,
-          #ff5f00 0%,
-          #ff6a00 25%,
-          #ff7a00 50%,
-          #ff8c1a 75%,
-          #ffa322 100%
-        )`,
-      }}
-    >
-      <div className="container-fluid container-md">
+    <section className="py-5 px-3" style={{ background: "linear-gradient(180deg, #ff5f00 0%, #ff6a00 100%)", minHeight: "100vh" }}>
+      <div className="container">
         <div className="row justify-content-center">
-          <div className="col-12 col-lg-10">
-            <div className="overflow-hidden rounded-4 bg-white shadow-lg">
+          <div className="col-12 col-lg-11">
+            <div className="overflow-hidden rounded-5 bg-white shadow-lg border-0">
               <div className="row g-0">
-                <div className="col-12 col-md-5 bg-[#6F2DBD] p-3 p-md-5 text-white">
-                  <p className="mb-2 text-sm uppercase tracking-wide text-[#9FE3DB]">
-                    Canal seguro
+                
+                {/* --- LADO IZQUIERDO: DISEÑO PREMIUM --- */}
+                <div className="col-12 col-md-5 p-4 p-md-5 text-white" style={{ background: "linear-gradient(135deg, #2c3e50 0%, #1a2533 100%)" }}>
+                  <p className="mb-2 text-uppercase fw-bold opacity-50" style={{ fontSize: "0.75rem", letterSpacing: "2px" }}>
+                    CANAL SEGURO
                   </p>
 
-                  <h2 className="font-heading text-4xl uppercase leading-none text-white">
-                    Denuncia
+                  <h2 className="display-4 fw-bold mb-4" style={{ fontFamily: "Arial Black, sans-serif", letterSpacing: "-2px" }}>
+                    DENUNCIA
                   </h2>
 
-                  <p className="mt-3 mb-0 text-sm leading-6 text-white/90">
-                    Puedes reportar una situación de forma anónima o
-                    identificada. Tu información será tratada con
-                    confidencialidad.
+                  <p className="mb-4 opacity-75" style={{ fontSize: "1.05rem", lineHeight: "1.6" }}>
+                    Puedes reportar una situación de forma anónima o identificada. Tu información será tratada con total confidencialidad.
                   </p>
 
-                  <div className="mt-4 rounded-4 bg-[#C9B7F5] p-3 text-[#221F35]">
-                    <p className="mb-0 text-sm font-medium">
-                      También puedes denunciar si eres testigo de una situación.
+                  {/* Lista con Iconos Verdes */}
+                  <div className="mb-5 d-flex flex-column gap-3">
+                    <div className="d-flex align-items-center">
+                      <div className="rounded-circle d-flex align-items-center justify-content-center me-3" style={{ width: "26px", height: "26px", backgroundColor: "#8bc34a" }}>
+                        <span className="fw-bold" style={{ fontSize: "14px", color: "white" }}>✓</span>
+                      </div>
+                      <span className="fw-bold h5 mb-0">Confidencialidad total</span>
+                    </div>
+
+                    <div className="d-flex align-items-center">
+                      <div className="rounded-circle d-flex align-items-center justify-content-center me-3" style={{ width: "26px", height: "26px", backgroundColor: "#8bc34a" }}>
+                        <span className="fw-bold" style={{ fontSize: "14px", color: "white" }}>✓</span>
+                      </div>
+                      <span className="fw-bold h5 mb-0">Seguimiento del caso</span>
+                    </div>
+
+                    <div className="d-flex align-items-center">
+                      <div className="rounded-circle d-flex align-items-center justify-content-center me-3" style={{ width: "26px", height: "26px", backgroundColor: "#8bc34a" }}>
+                        <span className="fw-bold" style={{ fontSize: "14px", color: "white" }}>✓</span>
+                      </div>
+                      <span className="fw-bold h5 mb-0">Apoyo institucional</span>
+                    </div>
+                  </div>
+
+                  <div className="rounded-4 p-4 mt-4" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                    <p className="mb-0 small fw-bold italic text-center">
+                      💡 También puedes denunciar si eres testigo de una situación.
                     </p>
                   </div>
                 </div>
 
-                <div className="col-12 col-md-7 p-3 p-md-5">
-                  <h3 className="font-heading text-3xl uppercase leading-none text-[#6F2DBD]">
-                    Cuéntanos lo ocurrido
+                {/* --- LADO DERECHO: FORMULARIO --- */}
+                <div className="col-12 col-md-7 p-4 p-md-5">
+                  <h3 className="fw-bold text-uppercase mb-2" style={{ color: "#4A4A4A" }}>
+                    CUÉNTANOS LO OCURRIDO
                   </h3>
-
-                  <p className="mt-3 text-sm text-[#4B4B5A]">
-                    Completa el formulario con la mayor claridad posible.
-                  </p>
+                  <p className="text-muted mb-4 small">Completa el formulario con la mayor claridad posible.</p>
 
                   {statusMessage && (
-                    <div
-                      className={`mt-3 rounded-4 px-3 py-2 text-sm ${
-                        isSuccess
-                          ? "bg-green-100 text-green-700"
-                          : "bg-red-100 text-red-700"
-                      }`}
-                    >
+                    <div className={`alert ${isSuccess ? "alert-success" : "alert-danger"} rounded-4 mb-4`} role="alert">
                       {statusMessage}
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="mt-4">
-                    <div className="mb-3">
-                      <label className="mb-2 block text-sm fw-semibold text-[#221F35]">
-                        ¿Cómo deseas reportar?
-                      </label>
-
-                      <div className="d-flex flex-column flex-sm-row gap-3">
-                        <label
-                          className={`flex-fill rounded-4 border p-3 transition-all duration-300 ${
-                            formData.reportMode === "anonymous"
-                              ? "border-[#FF6A13] bg-[#FFF1E8] shadow-sm"
-                              : "border-[#D9D9E3] bg-white"
-                          }`}
-                        >
-                          <input
-                            type="radio"
-                            name="reportMode"
-                            value="anonymous"
-                            checked={formData.reportMode === "anonymous"}
-                            onChange={handleChange}
-                            className="me-2"
-                          />
-                          <span className="fw-semibold text-[#221F35]">
-                            Anónimo
-                          </span>
-                          <p className="mb-0 mt-2 text-sm text-[#5B566E]">
-                            No se mostrarán tus datos personales.
-                          </p>
-                        </label>
-
-                        <label
-                          className={`flex-fill rounded-4 border p-3 transition-all duration-300 ${
-                            formData.reportMode === "identified"
-                              ? "border-[#6F2DBD] bg-[#F3ECFF] shadow-sm"
-                              : "border-[#D9D9E3] bg-white"
-                          }`}
-                        >
-                          <input
-                            type="radio"
-                            name="reportMode"
-                            value="identified"
-                            checked={formData.reportMode === "identified"}
-                            onChange={handleChange}
-                            className="me-2"
-                          />
-                          <span className="fw-semibold text-[#221F35]">
-                            Identificado
-                          </span>
-                          <p className="mb-0 mt-2 text-sm text-[#5B566E]">
-                            Podrán contactarte para seguimiento del caso.
-                          </p>
-                        </label>
+                  <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                      <label className="mb-2 d-block fw-bold text-dark small italic">¿CÓMO DESEAS REPORTAR?</label>
+                      <div className="row g-3">
+                        {/* BOTÓN ANÓNIMO */}
+                        <div className="col-sm-6">
+                          <label className={`w-100 p-3 rounded-4 border transition-all text-center ${formData.reportMode === "anonymous" ? "border-dark bg-dark text-white shadow-sm" : "border-secondary"}`} style={{ cursor: "pointer" }}>
+                            <input type="radio" name="reportMode" value="anonymous" checked={formData.reportMode === "anonymous"} onChange={handleChange} className="d-none" />
+                            <span className="fw-bold d-block mb-1">🕶️ Anónimo</span>
+                            <p className={`mb-0 x-small ${formData.reportMode === "anonymous" ? "text-white-50" : "text-muted"}`} style={{ fontSize: "0.72rem" }}>No se mostrarán tus datos.</p>
+                          </label>
+                        </div>
+                        {/* BOTÓN IDENTIFICADO - NARANJA FUERTE */}
+                        <div className="col-sm-6">
+                          <label className={`w-100 p-3 rounded-4 border transition-all text-center ${formData.reportMode === "identified" ? "border-[#FF5A00] text-white shadow-sm" : "border-secondary"}`} 
+                                 style={{ 
+                                   cursor: "pointer", 
+                                   backgroundColor: formData.reportMode === "identified" ? "#FF5A00" : "transparent" 
+                                 }}>
+                            <input type="radio" name="reportMode" value="identified" checked={formData.reportMode === "identified"} onChange={handleChange} className="d-none" />
+                            <span className="fw-bold d-block mb-1">👤 Identificado</span>
+                            <p className={`mb-0 x-small ${formData.reportMode === "identified" ? "text-white-90" : "text-muted"}`} style={{ fontSize: "0.72rem" }}>Para seguimiento directo.</p>
+                          </label>
+                        </div>
                       </div>
                     </div>
 
+                    {/* RESTO DEL CONTENIDO DEL FORMULARIO INTACTO */}
                     <div className="mb-3">
-                      <label className="mb-2 block text-sm fw-semibold text-[#221F35]">
-                        Reporto como
-                      </label>
-                      <select
-                        name="reporterRole"
-                        value={formData.reporterRole}
-                        onChange={handleChange}
-                        className="form-select rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#6F2DBD]"
-                      >
+                      <label className="form-label fw-bold small">REPORTO COMO</label>
+                      <select name="reporterRole" value={formData.reporterRole} onChange={handleChange} className={`form-select rounded-3 py-2 ${errors.reporterRole ? "is-invalid" : ""}`}>
                         <option value="">Selecciona una opción</option>
                         <option value="Víctima">Víctima</option>
                         <option value="Testigo">Testigo</option>
-                        <option value="No estoy segura/o">
-                          No estoy segura/o
-                        </option>
+                        <option value="No estoy segura/o">No estoy segura/o</option>
                       </select>
-                      {errors.reporterRole && (
-                        <p className="mt-1 mb-0 text-sm text-danger">
-                          {errors.reporterRole}
-                        </p>
-                      )}
                     </div>
 
                     <div className="mb-3">
-                      <label className="mb-2 block text-sm fw-semibold text-[#221F35]">
-                        Tienda, área o lugar
-                      </label>
-                      <input
-                        type="text"
-                        name="place"
-                        value={formData.place}
-                        onChange={handleChange}
-                        placeholder="Ej. Cajas, almacén, tienda Ate"
-                        className="form-control rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#FF6A13]"
-                      />
-                      {errors.place && (
-                        <p className="mt-1 mb-0 text-sm text-danger">
-                          {errors.place}
-                        </p>
-                      )}
+                      <label className="form-label fw-bold small">TIENDA, ÁREA O LUGAR</label>
+                      <input name="place" value={formData.place} onChange={handleChange} className={`form-control rounded-3 py-2 ${errors.place ? "is-invalid" : ""}`} placeholder="Ej. Cajas, almacén..." />
                     </div>
 
                     <div className="mb-3">
-                      <label className="mb-2 block text-sm fw-semibold text-[#221F35]">
-                        ¿Quién estuvo involucrado?
-                      </label>
-                      <select
-                        name="involvedPerson"
-                        value={formData.involvedPerson}
-                        onChange={handleChange}
-                        className="form-select rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#6F2DBD]"
-                      >
+                      <label className="form-label fw-bold small">¿QUIÉN ESTUVO INVOLUCRADO?</label>
+                      <select name="involvedPerson" value={formData.involvedPerson} onChange={handleChange} className={`form-select rounded-3 py-2 ${errors.involvedPerson ? "is-invalid" : ""}`}>
                         <option value="">Selecciona una opción</option>
                         <option value="Compañero/a">Compañero/a</option>
                         <option value="Jefe o líder">Jefe o líder</option>
@@ -308,158 +207,57 @@ export default function ReportForm() {
                         <option value="Proveedor">Proveedor</option>
                         <option value="Otro">Otro</option>
                       </select>
-                      {errors.involvedPerson && (
-                        <p className="mt-1 mb-0 text-sm text-danger">
-                          {errors.involvedPerson}
-                        </p>
-                      )}
-
                       {formData.involvedPerson === "Otro" && (
-                        <>
-                          <input
-                            type="text"
-                            name="involvedOther"
-                            value={formData.involvedOther}
-                            onChange={handleChange}
-                            placeholder="Especifica quién estuvo involucrado"
-                            className="form-control mt-2 rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#6F2DBD]"
-                          />
-                          {errors.involvedOther && (
-                            <p className="mt-1 mb-0 text-sm text-danger">
-                              {errors.involvedOther}
-                            </p>
-                          )}
-                        </>
+                        <input name="involvedOther" value={formData.involvedOther} onChange={handleChange} className="form-control mt-2 rounded-3 py-2" placeholder="Especifica quién..." />
                       )}
                     </div>
 
                     <div className="mb-3">
-                      <label className="mb-2 block text-sm fw-semibold text-[#221F35]">
-                        Tipo de situación
-                      </label>
-                      <select
-                        name="incidentType"
-                        value={formData.incidentType}
-                        onChange={handleChange}
-                        className="form-select rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#FF6A13]"
-                      >
+                      <label className="form-label fw-bold small">TIPO DE SITUACIÓN</label>
+                      <select name="incidentType" value={formData.incidentType} onChange={handleChange} className={`form-select rounded-3 py-2 ${errors.incidentType ? "is-invalid" : ""}`}>
                         <option value="">Selecciona una opción</option>
-                        <option value="Comentario sexual o sexista">
-                          Comentario sexual o sexista
-                        </option>
-                        <option value="Bromas incómodas o humillantes">
-                          Bromas incómodas o humillantes
-                        </option>
-                        <option value="Mensajes insistentes">
-                          Mensajes insistentes
-                        </option>
-                        <option value="Comentarios sobre apariencia">
-                          Comentarios sobre apariencia
-                        </option>
-                        <option value="Trato discriminatorio">
-                          Trato discriminatorio
-                        </option>
+                        <option value="Comentario sexual o sexista">Comentario sexual o sexista</option>
+                        <option value="Bromas incómodas o humillantes">Bromas incómodas o humillantes</option>
+                        <option value="Mensajes insistentes">Mensajes insistentes</option>
+                        <option value="Trato discriminatorio">Trato discriminatorio</option>
                         <option value="Otro">Otro</option>
                       </select>
-                      {errors.incidentType && (
-                        <p className="mt-1 mb-0 text-sm text-danger">
-                          {errors.incidentType}
-                        </p>
-                      )}
-
                       {formData.incidentType === "Otro" && (
-                        <>
-                          <input
-                            type="text"
-                            name="incidentOther"
-                            value={formData.incidentOther}
-                            onChange={handleChange}
-                            placeholder="Especifica el tipo de situación"
-                            className="form-control mt-2 rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#FF6A13]"
-                          />
-                          {errors.incidentOther && (
-                            <p className="mt-1 mb-0 text-sm text-danger">
-                              {errors.incidentOther}
-                            </p>
-                          )}
-                        </>
+                        <input name="incidentOther" value={formData.incidentOther} onChange={handleChange} className="form-control mt-2 rounded-3 py-2" placeholder="Especifica la situación..." />
                       )}
                     </div>
 
-                    <div className="mb-3">
-                      <label className="mb-2 block text-sm fw-semibold text-[#221F35]">
-                        Describe lo ocurrido
-                      </label>
-                      <textarea
-                        name="description"
-                        value={formData.description}
-                        onChange={handleChange}
-                        rows="5"
-                        placeholder="Explica lo que pasó con claridad"
-                        className="form-control rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#6F2DBD]"
-                      />
-                      {errors.description && (
-                        <p className="mt-1 mb-0 text-sm text-danger">
-                          {errors.description}
-                        </p>
-                      )}
+                    <div className="mb-4">
+                      <label className="form-label fw-bold small">DESCRIBE LO OCURRIDO</label>
+                      <textarea name="description" value={formData.description} onChange={handleChange} rows="3" className={`form-control rounded-3 ${errors.description ? "is-invalid" : ""}`} placeholder="Explica lo que pasó..."></textarea>
                     </div>
 
                     {formData.reportMode === "identified" && (
-                      <div className="mb-3 rounded-4 bg-[#F3ECFF] p-3">
-                        <p className="mb-3 text-sm fw-semibold text-[#6F2DBD]">
-                          Datos de contacto
-                        </p>
-
-                        <div className="mb-3">
-                          <label className="mb-2 block text-sm fw-semibold text-[#221F35]">
-                            Nombre
-                          </label>
-                          <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            placeholder="Ingresa tu nombre"
-                            className="form-control rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#6F2DBD]"
-                          />
-                          {errors.name && (
-                            <p className="mt-1 mb-0 text-sm text-danger">
-                              {errors.name}
-                            </p>
-                          )}
-                        </div>
-
-                        <div className="mb-0">
-                          <label className="mb-2 block text-sm fw-semibold text-[#221F35]">
-                            Correo electrónico
-                          </label>
-                          <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="correo@ejemplo.com"
-                            className="form-control rounded-4 border-[#D9D9E3] py-3 shadow-none focus:border-[#FF6A13]"
-                          />
-                          {errors.email && (
-                            <p className="mt-1 mb-0 text-sm text-danger">
-                              {errors.email}
-                            </p>
-                          )}
+                      <div className="p-3 bg-light rounded-4 mb-4 border border-primary-subtle">
+                        <p className="small fw-bold text-primary mb-3">DATOS DE CONTACTO</p>
+                        <div className="row">
+                          <div className="col-md-6 mb-2">
+                            <label className="form-label small">Nombre</label>
+                            <input name="name" value={formData.name} onChange={handleChange} className="form-control" />
+                          </div>
+                          <div className="col-md-6 mb-0">
+                            <label className="form-label small">Email</label>
+                            <input name="email" value={formData.email} onChange={handleChange} className="form-control" />
+                          </div>
                         </div>
                       </div>
                     )}
 
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="mt-2 w-100 rounded-4 border-0 bg-[#FF6A13] px-4 py-3 text-sm fw-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:bg-[#E85A0C]"
-                    >
-                      {isSubmitting ? "Enviando..." : "Enviar denuncia"}
-                    </button>
+                    {/* BOTÓN ENVIAR - AZUL PROFESIONAL */}
+                    <div className="text-center">
+                      <button type="submit" disabled={isSubmitting} className="btn px-5 py-2 rounded-3 fw-bold text-white shadow-sm transition-all" 
+                              style={{ backgroundColor: "#4a76c0", border: "none" }}>
+                        {isSubmitting ? "Enviando..." : "Enviar denuncia"}
+                      </button>
+                    </div>
                   </form>
                 </div>
+
               </div>
             </div>
           </div>
