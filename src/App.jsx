@@ -6,7 +6,6 @@ import QueHago from "./pages/QueHago";
 import ResultadoFinal from "./pages/ResultadoFinal";
 import ReportForm from "./pages/ReportForm";
 import Login from "./pages/Login";
-
 import Footer from "./components/Footer";
 import Header from "./components/header";
 
